@@ -1,0 +1,312 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101b33">
+  <meta name="description" content="Theo dõi video mới nhất từ các kênh YouTube bạn chọn.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png">
+  <title>YouTube Mới Nhất</title>
+  <style>
+    :root{--bg:#0b1222;--panel:#121d33;--panel2:#172540;--line:#293954;--text:#f2f5fb;--muted:#a7b4c9;--accent:#64e0c0;--accent2:#9cafff;--danger:#ff818b;--gold:#ffcf70;--shadow:0 15px 40px #0003}
+    *{box-sizing:border-box} html{color-scheme:dark} body{margin:0;background:radial-gradient(ellipse at top left,#18294a 0,transparent 42%),var(--bg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);min-height:100vh}
+    button,input,select{font:inherit} button{cursor:pointer} a{color:inherit} .wrap{max-width:900px;margin:auto;padding:18px 15px calc(36px + env(safe-area-inset-bottom))}
+    header{display:flex;align-items:center;gap:13px;padding:12px 0 22px}.logo{width:50px;height:50px;flex-shrink:0;border-radius:16px;background:linear-gradient(135deg,#5be2bf,#91a8ff);display:grid;place-items:center;box-shadow:0 8px 25px #64e0c033}.logo svg{width:29px;height:29px}.eyebrow{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.title{font-size:clamp(25px,6vw,34px);line-height:1.12;font-weight:850;letter-spacing:-.035em;margin:2px 0 3px}.subtitle{font-size:13px;color:var(--muted)}
+    .top-actions{margin-left:auto;display:flex;gap:8px;flex-shrink:0}.icon-btn{width:43px;height:43px;border:1px solid var(--line);border-radius:13px;background:#15223a;color:var(--text);font-size:20px;display:grid;place-items:center}.icon-btn:disabled{opacity:.45;cursor:wait}
+    .panel{background:linear-gradient(145deg,#15223a,#101a2e);border:1px solid var(--line);border-radius:19px;padding:17px;margin-bottom:14px;box-shadow:var(--shadow)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.section-title{font-size:16px;font-weight:800;display:flex;align-items:center;gap:9px}.num{border-radius:9px;padding:2px 8px;background:#233651;color:var(--accent);font-size:12px;font-weight:800}
+    label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px}.input-row{display:flex;gap:8px}.field{min-width:0;width:100%;border:1px solid #31425e;background:#0b1427;border-radius:12px;padding:12px 13px;color:var(--text);outline:none}.field:focus{border-color:var(--accent);box-shadow:0 0 0 3px #64e0c01f}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn-primary{background:var(--accent);color:#08251f}.btn-secondary{background:#243650;color:var(--text);border:1px solid #344a68}.btn-danger{color:#ffc0c4;background:#3a202e;border:1px solid #5a3040}.btn:disabled{opacity:.5;cursor:wait}.hint{font-size:12px;color:var(--muted);margin:9px 0 0}.settings-toggle{border:0;background:transparent;color:var(--accent2);padding:0;font-weight:700}
+    .settings-body{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.key-line{display:flex;gap:8px}.key-line .field{flex:1}.security-note{font-size:12px;color:#b7c4d7;background:#0b1529;border-radius:10px;padding:10px 12px;margin-top:10px}.security-note strong{color:var(--gold)}
+    .toolbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.toolbar .field{flex:1;min-width:140px}.toolbar select{max-width:160px}.status{margin:10px 1px 0;font-size:12px;color:var(--muted);min-height:18px}.status.error{color:#ff9ca5}.status.ok{color:var(--accent)}
+    .chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 0}.chip{border:1px solid #334968;background:#1a2a44;color:#d9e4f6;border-radius:99px;padding:5px 10px;font-size:12px;display:flex;gap:7px;align-items:center}.chip button{border:0;color:#ffb5bc;background:transparent;padding:0;font-size:17px;line-height:1}
+    .results-head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin:23px 2px 11px}.results-head h2{margin:0;font-size:20px;letter-spacing:-.025em}.results-head p{margin:2px 0 0;color:var(--muted);font-size:12px}.cards{display:grid;gap:11px}.video-card{background:linear-gradient(115deg,#172640,#101a2d);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:138px minmax(0,1fr);gap:0;transition:transform .15s,border-color .15s}.video-card:active{transform:scale(.992)}.thumb{width:138px;height:100%;min-height:105px;object-fit:cover;background:#26344a}.video-info{padding:12px 13px;min-width:0;display:flex;flex-direction:column;align-items:flex-start}.channel-name{font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--accent2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}.video-title{font-size:14px;line-height:1.4;font-weight:750;text-decoration:none;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:5px 0 8px}.video-title:hover{color:var(--accent)}.date{font-size:11px;color:var(--muted);margin-top:auto}.date b{color:var(--gold);font-weight:700}.video-actions{display:flex;gap:10px;align-items:center;margin-top:9px}.mini-link{font-size:11px;color:#c6d3ea;text-decoration:none}.mini-link:hover{color:var(--accent)}
+    .empty{padding:28px 18px;text-align:center;background:#111d32;border:1px dashed #344767;border-radius:18px;color:var(--muted)}.empty .emoji{font-size:32px;margin-bottom:5px}.empty strong{display:block;color:var(--text);margin-bottom:4px}.skeleton{height:126px;border-radius:16px;background:linear-gradient(100deg,#15243b 20%,#213552 40%,#15243b 60%);background-size:200% 100%;animation:shine 1.4s linear infinite}@keyframes shine{to{background-position:-200% 0}}
+    .footer{color:#75859f;text-align:center;font-size:11px;margin:25px 0 5px}.footer a{color:#a9b9d4}.install-banner{display:none;margin-bottom:13px}.install-banner.show{display:block}.toast{position:fixed;z-index:9;bottom:calc(18px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);max-width:calc(100% - 28px);background:#e8fff8;color:#0c2b24;font-weight:700;padding:11px 15px;border-radius:12px;box-shadow:0 10px 30px #0005;display:none}
+    @media(min-width:680px){.wrap{padding:28px 25px 40px}.video-card{grid-template-columns:176px minmax(0,1fr)}.thumb{width:176px;min-height:132px}.video-info{padding:15px 17px}.video-title{font-size:15px;-webkit-line-clamp:2}.panel{padding:20px}.video-actions{margin-top:10px}}
+    @media(max-width:430px){.wrap{padding:13px 11px calc(25px + env(safe-area-inset-bottom))}.logo{width:44px;height:44px;border-radius:14px}.subtitle{font-size:12px}.top-actions{gap:5px}.icon-btn{width:39px;height:39px}.panel{padding:14px;border-radius:16px}.input-row{flex-direction:column}.input-row .btn{width:100%}.video-card{grid-template-columns:112px minmax(0,1fr)}.thumb{width:112px;min-height:105px}.video-info{padding:10px}.video-title{font-size:13px;-webkit-line-clamp:3}.date{font-size:10px}.toolbar select{max-width:120px;padding:10px}.results-head h2{font-size:18px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="4" fill="#0d2830"/><path d="M10 8.5v7l6-3.5-6-3.5Z" fill="#70e7c6"/></svg></div>
+    <div><div class="eyebrow">BẢN THEO DÕI CÁ NHÂN</div><div class="title">YouTube Mới Nhất</div><div class="subtitle">Video mới từ những kênh bạn quan tâm</div></div>
+    <div class="top-actions"><button class="icon-btn" id="refreshBtn" title="Làm mới tất cả" aria-label="Làm mới tất cả">↻</button></div>
+  </header>
+
+  <div class="panel install-banner" id="installBanner"><div class="section-head"><div class="section-title">📲 Cài lên màn hình chính</div><button id="dismissInstall" class="settings-toggle">Ẩn</button></div><div class="hint">Mở menu Chrome (⋮), chọn <b>Thêm vào màn hình chính</b> hoặc <b>Cài đặt ứng dụng</b>.</div></div>
+
+  <section class="panel">
+    <div class="section-head"><div class="section-title">🔗 Thêm kênh YouTube</div><span class="num" id="channelCount">0 kênh</span></div>
+    <label for="channelUrls">Dán nhiều link kênh YouTube (mỗi link một dòng)</label>
+    <form class="input-row" id="addForm"><textarea class="field" id="channelUrls" rows="4" placeholder="https://www.youtube.com/@kenh1&#10;https://www.youtube.com/@kenh2&#10;https://www.youtube.com/channel/UC..." autocomplete="off" required style="min-height:110px;resize:vertical"></textarea><button class="btn btn-primary" id="addBtn" type="submit">＋ Thêm các kênh</button></form>
+    <div class="hint">Dán mỗi link trên một dòng; cũng có thể phân tách bằng dấu chấm phẩy hoặc dấu phẩy. Hỗ trợ link dạng <b>@tên-kênh</b>, <b>/channel/ID</b>, <b>/user/tên</b> và cả link video YouTube.</div>
+    <div class="chips" id="channelChips"></div>
+    <div class="status" id="addStatus" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><div class="section-title">⚙️ Kết nối YouTube Data API</div><button class="settings-toggle" id="toggleSettings" aria-expanded="true">Thu gọn ▲</button></div>
+    <div id="settingsBody" class="settings-body">
+      <label for="apiKey">API key của bạn</label>
+      <div class="key-line"><input class="field" id="apiKey" type="password" placeholder="API key mặc định đã được điền sẵn; bạn có thể sửa tại đây" autocomplete="off" spellcheck="false"><button class="btn btn-secondary" id="showKeyBtn" type="button">Hiện</button><button class="btn btn-primary" id="saveKeyBtn" type="button">Lưu</button></div>
+      <div class="security-note"><strong>Lưu ý:</strong> API key chỉ được lưu trong bộ nhớ trình duyệt trên thiết bị này. Hãy giới hạn key chỉ cho <b>YouTube Data API v3</b> và thiết lập giới hạn website sau khi đưa ứng dụng lên mạng.</div>
+      <p class="hint">Tạo key tại <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a> → bật YouTube Data API v3 → Credentials (Thông tin xác thực) → Create credentials → API key. Hướng dẫn ở file README đi kèm.</p>
+      <div class="input-row" style="margin-top:12px"><button class="btn btn-secondary" id="forgetKeyBtn" type="button">Khôi phục API key mặc định</button></div>
+    </div>
+    <div class="status" id="keyStatus" role="status" aria-live="polite"></div>
+  </section>
+
+  <div class="results-head"><div><h2>Video mới nhất</h2><p id="updatedText">Thêm kênh để bắt đầu theo dõi</p></div></div>
+  
+  <!-- Thanh công cụ tìm kiếm, sắp xếp và lọc -->
+  <section class="toolbar" aria-label="Lọc video">
+    <input class="field" id="searchInput" type="search" placeholder="Tìm tiêu đề hoặc tên kênh…">
+    <select class="field" id="sortSelect" aria-label="Sắp xếp video">
+      <option value="date">🕒 Mới nhất</option>
+      <option value="views">🔥 Nhiều lượt xem nhất</option>
+    </select>
+    <select class="field" id="limitSelect" aria-label="Số video mỗi kênh">
+      <option value="3">3 video/kênh</option>
+      <option value="5" selected>5 video/kênh</option>
+      <option value="10">10 video/kênh</option>
+      <option value="15">15 video/kênh</option>
+    </select>
+  </section>
+
+  <div class="status" id="fetchStatus" role="status" aria-live="polite"></div>
+  <main id="videoList" class="cards" style="margin-top:12px"><div class="empty"><div class="emoji">📺</div><strong>Chưa có kênh nào</strong>Thêm link kênh YouTube ở phía trên, sau đó bấm làm mới.</div></main>
+  <div class="footer">YouTube Mới Nhất · Dữ liệu video công khai từ YouTube Data API.<br>Ứng dụng không thuộc sở hữu hay liên kết với YouTube.</div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const STORE_KEY = 'ytLatest.channels.v1';
+  const API_KEY_STORAGE = 'ytLatest.apiKey.v1';
+  const PREF_LIMIT = 'ytLatest.limit.v1';
+  const PREF_SORT = 'ytLatest.sort.v1';
+  const DEFAULT_API_KEY = 'AIzaSyAoUT4KDLH2ZB83WPc6jrhsswBeOi3GbUY';
+  let channels = loadJson(STORE_KEY, []);
+  let latestVideos = [];
+  let busy = false;
+  let toastTimer;
+  const apiInput = $('apiKey');
+  apiInput.value = localStorage.getItem(API_KEY_STORAGE) || DEFAULT_API_KEY;
+  $('limitSelect').value = localStorage.getItem(PREF_LIMIT) || '5';
+  if ($('sortSelect')) {$('sortSelect').value = localStorage.getItem(PREF_SORT) || 'date';
+  }
+
+  function loadJson(key, fallback){try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:fallback}catch{return fallback}}
+  function saveChannels(){localStorage.setItem(STORE_KEY,JSON.stringify(channels));renderChips();}
+  function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function setStatus(id,msg,type=''){const el=$(id);el.textContent=msg;el.className='status'+(type?' '+type:'')}
+  function toast(msg){const el=$('toast');el.textContent=msg;el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.style.display='none',2600)}
+  function apiKey(){return apiInput.value.trim() || localStorage.getItem(API_KEY_STORAGE) || DEFAULT_API_KEY}
+  async function api(path,params){
+    const key=apiKey();if(!key)throw new Error('Trước tiên hãy nhập API key rồi bấm Lưu.');
+    const url=new URL('https://www.googleapis.com/youtube/v3/'+path);Object.entries({...params,key}).forEach(([k,v])=>url.searchParams.set(k,v));
+    const response=await fetch(url.toString());let data;
+    try{data=await response.json()}catch{throw new Error('Không đọc được phản hồi từ YouTube. Hãy kiểm tra kết nối mạng.')}
+    if(!response.ok){const reason=data?.error?.errors?.[0]?.reason;let msg=data?.error?.message||'Không gọi được YouTube Data API.';if(reason==='keyInvalid')msg='API key không hợp lệ. Hãy kiểm tra lại key.';if(reason==='quotaExceeded')msg='Đã hết hạn mức API trong ngày. Hãy thử lại sau khi hạn mức được đặt lại.';if(reason==='accessNotConfigured')msg='Bạn chưa bật YouTube Data API v3 trong Google Cloud.';throw new Error(msg)}
+    return data;
+  }
+  function parseYoutubeUrl(raw){
+    let u;try{u=new URL(raw.trim())}catch{throw new Error('Đường link chưa hợp lệ. Hãy dán link đầy đủ bắt đầu bằng https://')}
+    const host=u.hostname.toLowerCase().replace(/^www\./,'').replace(/^m\./,'');
+    if(!['youtube.com','music.youtube.com','youtu.be'].includes(host))throw new Error('Vui lòng dùng đường link từ youtube.com hoặc youtu.be.');
+    if(host==='youtu.be')return {type:'video',value:u.pathname.split('/').filter(Boolean)[0]||''};
+    const path=u.pathname.split('/').filter(Boolean);
+    const videoId=u.searchParams.get('v');if(videoId)return {type:'video',value:videoId};
+    if(['shorts','live','embed'].includes(path[0])&&path[1])return {type:'video',value:path[1]};
+    if(path[0]==='channel'&&path[1])return {type:'id',value:path[1]};
+    if(path[0]==='user'&&path[1])return {type:'username',value:decodeURIComponent(path[1])};
+    if(path[0]?.startsWith('@'))return {type:'handle',value:decodeURIComponent(path[0].slice(1))};
+    if(path[0]==='c'&&path[1])return {type:'handle',value:decodeURIComponent(path[1]),custom:true};
+    if(path.length===1&&path[0])return {type:'handle',value:decodeURIComponent(path[0])};
+    throw new Error('Không nhận ra link kênh này. Hãy sao chép link trang kênh, chẳng hạn youtube.com/@tenkenh hoặc youtube.com/channel/ID.');
+  }
+  async function resolveChannel(raw){
+    const ref=parseYoutubeUrl(raw);let ch;
+    if(ref.type==='video'){
+      if(!ref.value)throw new Error('Không tìm thấy mã video trong link.');
+      const v=await api('videos',{part:'snippet',id:ref.value});
+      if(!v.items?.length)throw new Error('Không tìm thấy video công khai theo link này.');
+      const cid=v.items[0].snippet.channelId;
+      const data=await api('channels',{part:'snippet,contentDetails',id:cid});ch=data.items?.[0];
+    }else if(ref.type==='id'){
+      const data=await api('channels',{part:'snippet,contentDetails',id:ref.value});ch=data.items?.[0];
+    }else if(ref.type==='username'){
+      const data=await api('channels',{part:'snippet,contentDetails',forUsername:ref.value});ch=data.items?.[0];
+    }else{
+      const data=await api('channels',{part:'snippet,contentDetails',forHandle:ref.value});ch=data.items?.[0];
+      if(!ch&&ref.custom){
+        const s=await api('search',{part:'snippet',type:'channel',q:ref.value,maxResults:5});
+        const list=(s.items||[]).map(i=>({id:i.id.channelId,name:i.snippet.title,description:i.snippet.description||''})).filter(i=>i.id);
+        if(list.length===1){const d=await api('channels',{part:'snippet,contentDetails',id:list[0].id});ch=d.items?.[0]}
+        else if(list.length>1)throw new Error('Không xác định chắc chắn được kênh từ link /c/. Hãy sao chép link dạng @tên-kênh hoặc /channel/ID.');
+      }
+    }
+    if(!ch)throw new Error('Không tìm thấy kênh. Kiểm tra link và bảo đảm kênh có nội dung công khai. Với link dạng /c/, hãy thử link @tên-kênh.');
+    if(!ch.contentDetails?.relatedPlaylists?.uploads)throw new Error('Kênh không cung cấp danh sách video tải lên công khai.');
+    return {id:ch.id,name:ch.snippet?.title||'Kênh YouTube',url:'https://www.youtube.com/channel/'+ch.id,uploads:ch.contentDetails.relatedPlaylists.uploads,thumbnail:ch.snippet?.thumbnails?.default?.url||''};
+  }
+  function renderChips(){
+    $('channelCount').textContent=channels.length+' kênh';
+    const root=$('channelChips');
+    if(!channels.length){root.innerHTML='';return}
+    root.innerHTML=channels.map(c=>`<span class="chip" title="${esc(c.name)}"><span>${esc(c.name)}</span><button type="button" data-remove="${esc(c.id)}" aria-label="Xóa ${esc(c.name)}" title="Xóa kênh">×</button></span>`).join('');
+  }
+  function renderVideos(){
+    const term=$('searchInput').value.trim().toLocaleLowerCase('vi');
+    const sortBy=$('sortSelect')?.value || 'date';
+    
+    // Lọc theo từ khóa tìm kiếm
+    let items=latestVideos.filter(v=>(v.title+' '+v.channelName).toLocaleLowerCase('vi').includes(term));
+    
+    // Sắp xếp theo lựa chọn (Mới nhất hoặc Nhiều lượt xem nhất)
+    items.sort((a, b) => {
+      if (sortBy === 'views') {
+        return (b.viewCount || 0) - (a.viewCount || 0);
+      } else {
+        return (Date.parse(b.publishedAt) || 0) - (Date.parse(a.publishedAt) || 0);
+      }
+    });
+
+    const root=$('videoList');
+    if(!channels.length){root.innerHTML='<div class="empty"><div class="emoji">📺</div><strong>Chưa có kênh nào</strong>Thêm link kênh YouTube ở phía trên, sau đó bấm làm mới.</div>';return}
+    if(!items.length){root.innerHTML=`<div class="empty"><div class="emoji">${term?'🔎':'🗂️'}</div><strong>${term?'Không tìm thấy video phù hợp':'Chưa tải video nào'}</strong>${term?'Thử từ khóa khác.':'Nhấn nút làm mới ↻ để lấy dữ liệu mới nhất.'}</div>`;return}
+    
+    root.innerHTML=items.map(v=>{
+      const when=v.publishedAt?new Date(v.publishedAt):null;
+      const full=when&&!Number.isNaN(when.getTime())?new Intl.DateTimeFormat('vi-VN',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Ho_Chi_Minh'}).format(when):'Chưa có thời gian';
+      const relative=when&&!Number.isNaN(when.getTime())?relativeTime(when):'';
+      const thumb=v.thumbnail||('https://i.ytimg.com/vi/'+encodeURIComponent(v.videoId)+'/mqdefault.jpg');
+      const viewsFormatted = new Intl.NumberFormat('vi-VN').format(v.viewCount || 0);
+      
+      return `<article class="video-card">
+        <img class="thumb" src="${esc(thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'">
+        <div class="video-info">
+          <div class="channel-name">${esc(v.channelName)}</div>
+          <a class="video-title" href="https://www.youtube.com/watch?v=${encodeURIComponent(v.videoId)}" target="_blank" rel="noopener">${esc(v.title)}</a>
+          <div class="date"><b>${esc(relative)}</b> · 👁️ ${esc(viewsFormatted)} lượt xem<br>Đăng lúc ${esc(full)}</div>
+          <div class="video-actions">
+            <a class="mini-link" href="https://www.youtube.com/watch?v=${encodeURIComponent(v.videoId)}" target="_blank" rel="noopener">▶ Xem video ↗</a>
+            <a class="mini-link" href="${esc(v.channelUrl)}" target="_blank" rel="noopener">Trang kênh ↗</a>
+          </div>
+        </div>
+      </article>`;
+    }).join('');
+  }
+  function relativeTime(d){const seconds=Math.round((d.getTime()-Date.now())/1000);const abs=Math.abs(seconds);if(abs<60)return seconds>0?'sắp đăng':'vừa đăng';const units=[['năm',31536000],['tháng',2592000],['tuần',604800],['ngày',86400],['giờ',3600],['phút',60]];for(const [name,n] of units){if(abs>=n){const count=Math.floor(abs/n);return seconds>0?`${count} ${name} nữa`:`${count} ${name} trước`}}return 'vừa đăng'}
+  
+  async function fetchAll(){
+    if(busy)return;
+    if(!apiKey()){setStatus('fetchStatus','Nhập và lưu API key để lấy video mới nhất.','error');$('settingsBody').style.display='block';$('toggleSettings').textContent='Thu gọn ▲';$('toggleSettings').setAttribute('aria-expanded','true');apiInput.focus();return}
+    if(!channels.length){setStatus('fetchStatus','Hãy thêm ít nhất một kênh YouTube trước.','error');return}
+    busy=true;$('refreshBtn').disabled=true;$('addBtn').disabled=true;$('refreshBtn').textContent='…';
+    setStatus('fetchStatus','Đang cập nhật video từ '+channels.length+' kênh…');
+    $('videoList').innerHTML=Array.from({length:Math.min(4,channels.length*2)}).map(()=>'<div class="skeleton"></div>').join('');
+    const limit=Number($('limitSelect').value)||5;let gathered=[];let failures=[];
+    
+    for(const c of channels){
+      try{
+        const data=await api('playlistItems',{part:'snippet,contentDetails',playlistId:c.uploads,maxResults:Math.max(1,Math.min(50,limit))});
+        for(const item of data.items||[]){
+          const sn=item.snippet||{};const videoId=sn.resourceId?.videoId;if(!videoId)continue;
+          const pub=item.contentDetails?.videoPublishedAt||sn.publishedAt||'';
+          if(sn.title==='Deleted video'||sn.title==='Private video')continue;
+          gathered.push({videoId,title:sn.title||'(Không có tiêu đề)',publishedAt:pub,channelName:c.name,channelUrl:c.url,thumbnail:sn.thumbnails?.medium?.url||sn.thumbnails?.high?.url||sn.thumbnails?.default?.url||''});
+        }
+      }catch(e){failures.push(c.name+': '+e.message)}
+    }
+    
+    // Gọi thêm API lấy thông tin số lượt xem (statistics) theo nhóm tối đa 50 video ID mỗi lần gọi
+    if (gathered.length > 0) {
+      const videoIds = gathered.map(v => v.videoId);
+      const chunks = [];
+      for (let i = 0; i < videoIds.length; i += 50) {
+        chunks.push(videoIds.slice(i, i + 50));
+      }
+      let statsMap = {};
+      for (const chunk of chunks) {
+        try {
+          const res = await api('videos', { part: 'statistics', id: chunk.join(',') });
+          for (const item of res.items || []) {
+            statsMap[item.id] = parseInt(item.statistics?.viewCount, 10) || 0;
+          }
+        } catch (err) {
+          // Bỏ qua lỗi thống kê lẻ nếu có sự cố mạng tạm thời
+        }
+      }
+      for (const v of gathered) {
+        v.viewCount = statsMap[v.videoId] ?? 0;
+      }
+    }
+
+    latestVideos = gathered;
+    renderVideos();
+    const now=new Intl.DateTimeFormat('vi-VN',{dateStyle:'short',timeStyle:'short',timeZone:'Asia/Ho_Chi_Minh'}).format(new Date());
+    $('updatedText').textContent='Cập nhật lúc '+now+' · '+latestVideos.length+' video';
+    if(failures.length){setStatus('fetchStatus','Một số kênh chưa tải được: '+failures.join(' | '),'error')}
+    else{setStatus('fetchStatus','Đã cập nhật thành công '+channels.length+' kênh.','ok')}
+    busy=false;$('refreshBtn').disabled=false;$('addBtn').disabled=false;$('refreshBtn').textContent='↻';
+  }
+
+  $('addForm').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const rawLinks=$('channelUrls').value.split(/[\r\n;,]+/).map(s=>s.trim()).filter(Boolean);
+    if(!rawLinks.length)return;
+    if(!apiKey()){
+      setStatus('addStatus','Hãy nhập API key trước khi thêm kênh.','error');
+      $('settingsBody').style.display='block';apiInput.focus();return;
+    }
+    $('addBtn').disabled=true;$('addBtn').textContent='Đang thêm…';
+    const added=[],duplicates=[],errors=[];
+    try{
+      for(let i=0;i<rawLinks.length;i++){
+        const raw=rawLinks[i];
+        setStatus('addStatus',`Đang xử lý kênh ${i+1}/${rawLinks.length}…`);
+        try{
+          const ch=await resolveChannel(raw);
+          if(channels.some(c=>c.id===ch.id))duplicates.push(ch.name);
+          else{channels.push(ch);added.push(ch.name);}
+        }catch(err){errors.push({link:raw,message:err.message||'Không thêm được kênh.'});}
+      }
+      if(added.length)saveChannels();
+      $('channelUrls').value='';
+      const details=[];
+      if(added.length)details.push(`Đã thêm ${added.length} kênh: ${added.slice(0,5).join(', ')}${added.length>5?'…':''}.`);
+      if(duplicates.length)details.push(`Bỏ qua ${duplicates.length} kênh đã có trong danh sách.`);
+      if(errors.length){
+        const shown=errors.slice(0,3).map(x=>`${x.link}: ${x.message}`).join(' | ');
+        details.push(`Có ${errors.length} link bị lỗi: ${shown}${errors.length>3?' | …':''}`);
+      }
+      if(!details.length)details.push('Không có kênh mới để thêm.');
+      setStatus('addStatus',details.join(' '),errors.length?'error':'ok');
+      if(added.length)toast(`Đã thêm ${added.length} kênh`);
+      else if(duplicates.length&&!errors.length)toast('Các kênh này đã có từ trước');
+      if(channels.length)await fetchAll();
+    }finally{
+      $('addBtn').disabled=false;$('addBtn').textContent='＋ Thêm các kênh';
+    }
+  });
+
+  $('channelChips').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b)return;const c=channels.find(x=>x.id===b.dataset.remove);if(!confirm('Xóa kênh “'+(c?.name||'này')+'” khỏi danh sách theo dõi?'))return;channels=channels.filter(x=>x.id!==b.dataset.remove);latestVideos=latestVideos.filter(v=>v.channelUrl!==c?.url);saveChannels();renderVideos();toast('Đã xóa kênh')});
+  $('refreshBtn').addEventListener('click',fetchAll);
+  $('searchInput').addEventListener('input',renderVideos);$('sortSelect')?.addEventListener('change',()=>{localStorage.setItem(PREF_SORT,$('sortSelect').value);renderVideos()});$('limitSelect').addEventListener('change',()=>{localStorage.setItem(PREF_LIMIT,$('limitSelect').value);fetchAll()});$('saveKeyBtn').addEventListener('click',()=>{const v=apiInput.value.trim();if(!v){setStatus('keyStatus','Vui lòng dán API key trước.','error');return}localStorage.setItem(API_KEY_STORAGE,v);setStatus('keyStatus','Đã lưu API key trên thiết bị này.','ok');toast('Đã lưu API key');if(channels.length)fetchAll()});
+  $('showKeyBtn').addEventListener('click',()=>{const show=apiInput.type==='password';apiInput.type=show?'text':'password';$('showKeyBtn').textContent=show?'Ẩn':'Hiện'});
+  $('forgetKeyBtn').addEventListener('click',()=>{if(!confirm('Xóa API key tùy chỉnh đã lưu và khôi phục key mặc định?'))return;localStorage.removeItem(API_KEY_STORAGE);apiInput.value=DEFAULT_API_KEY;setStatus('keyStatus','Đã khôi phục API key mặc định.','ok');toast('Đã khôi phục API key mặc định');if(channels.length)fetchAll()});
+  $('toggleSettings').addEventListener('click',()=>{const body=$('settingsBody');const hide=body.style.display!=='none';body.style.display=hide?'none':'block';$('toggleSettings').textContent=hide?'Mở cài đặt ▼':'Thu gọn ▲';$('toggleSettings').setAttribute('aria-expanded',String(!hide))});
+  $('dismissInstall').addEventListener('click',()=>$('installBanner').classList.remove('show'));
+  
+  renderChips();
+  renderVideos();
+  if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  if(apiKey()&&channels.length)fetchAll();
+})();
+</script>
+</body>
+</html>
